@@ -2,9 +2,12 @@
 Image=soju
 AutoUpdate=local
 
-Hostname=fire-soju
-Volume=/var/lib/soju:/var/lib/soju
+HostName=fire-soju
+Volume=/var/lib/soju:/var/lib/soju:Z
 PublishPort=6667:6667
+
+[Service]
+StateDirectory=soju
 
 [Install]
 WantedBy=default.target

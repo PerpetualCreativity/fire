@@ -1,17 +1,18 @@
-[Unit]
-Description="Run syncthing"
-
 # https://github.com/syncthing/syncthing/blob/main/README-Docker.md
 [Container]
 Image=docker.io/syncthing/syncthing:latest
 AutoUpdate=registry
 
-Hostname=fire-syncthing
-Volume=/var/lib/syncthing:/var/syncthing
+HostName=fire-syncthing
+Volume=/etc/syncthing:/etc/syncthing:Z
+Volume=/var/lib/syncthing:/var/syncthing:Z
 Network=host
 Environment=STGUIADDRESS=
-User=1000
-Group=1000
+Exec=--config=/etc/syncthing --data=/var/syncthing
+
+[Service]
+StateDirectory=syncthing
+ConfigurationDirectory=syncthing
 
 [Install]
 WantedBy=default.target

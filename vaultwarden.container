@@ -3,9 +3,12 @@
 Image=quay.io/vaultwarden/server:latest
 AutoUpdate=registry
 
-Hostname=fire-vaultwarden
-Volume=/var/lib/vaultwarden:/data/
+HostName=fire-vaultwarden
+Volume=/var/lib/vaultwarden:/data/:Z
 PublishPort=8081:80
+
+[Service]
+StateDirectory=vaultwarden
 
 [Install]
 WantedBy=default.target

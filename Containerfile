@@ -50,13 +50,14 @@ EOF
 copy bootupctl-shim /usr/bin/bootupctl
 run chmod +x /usr/bin/bootupctl
 
-# add containers
+# editors :)
+run dnf remove -y nano && dnf install -y helix
+
+run dnf clean all
+
+# add containers -- this is last because I update these the most
 copy syncthing.container miniflux/* vaultwarden.container soju/systemd/* /usr/share/containers/systemd
 copy soju/Containerfile /usr/share/containerfiles/soju-Containerfile
 run systemctl enable podman-auto-update.timer
 
-run dnf remove -y nano
-run dnf install -y helix
-
-run dnf clean all
 run bootc container lint
