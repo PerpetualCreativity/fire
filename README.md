@@ -16,7 +16,7 @@ Things this bootable container has:
 
 ## installing
 
-I recommend using Podman Desktop with the Bootable Containers extension for building the container and the bootc images. Instead of building, you can also install ghcr.io/PerpetualCreativity/fire-rpi directly, but I do not recommend this if you are not me since it will automatically update every time I push to the registry :) (see `.github/workflows/build_rpi.yml`)
+I recommend using Podman Desktop with the Bootable Containers extension for building the container and the bootc images. Instead of building, you can also install ghcr.io/PerpetualCreativity/fire-rpi directly, but I do not recommend this if you are not me since it will automatically update every time I push to the registry :) (see `.github/workflows/build.yml`)
 
 Notes:
 - The Containerfile expects a `vulcan_pubkey` build argument, which will become the authorized ssh public key for the user `vulcan`.
