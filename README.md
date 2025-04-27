@@ -1,7 +1,5 @@
 # my fedora bootc config
 
-**TODO**: setup restart policies for containers, fix bootc container lint warnings
-
 This is for my Raspberry Pi 4.
 
 Things this bootable container has:
@@ -31,3 +29,9 @@ Notes:
 [podlet](https://github.com/containers/podlet) can generate quadlets ([podman-systemd.unit](https://docs.podman.io/en/latest/markdown/podman-systemd.unit.5.html) files) from running containers/pods.
 For services that are not easy to set up, I've found it's easier to create the containers/pods locally and then use podlet to generate a (starting point for) the quadlets. Note that you need `[Install] WantedBy=default.target`; podlet will omit this but it is necessary on bootc systems.
 
+## bugs/todos
+
+- update to F42
+- add restart policies for all containers
+- fix bootc lint warnings
+- make miniflux wait for its associated postgres container
