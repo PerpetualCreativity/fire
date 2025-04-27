@@ -1,9 +1,11 @@
 # my fedora bootc config
 
+![](https://ghcr-badge.egpl.dev/perpetualcreativity/fire/size?color=%233a88fe&tag=latest&label=image+size&trim=)
+
 This is for my Raspberry Pi 4.
 
 Things this bootable container has:
-- Fedora 41 (might change soon)
+- Fedora 42
 - Tailscale layered on
 - Containers:
   - Syncthing
@@ -31,7 +33,6 @@ For services that are not easy to set up, I've found it's easier to create the c
 
 ## bugs/todos
 
-- update to F42
 - add restart policies for all containers
 - fix bootc lint warnings
 - make miniflux wait for its associated postgres container

@@ -1,4 +1,4 @@
-from quay.io/fedora/fedora-bootc:41
+from quay.io/fedora/fedora-bootc:42
 
 run dnf -y install 'dnf5-command(config-manager)'
 
