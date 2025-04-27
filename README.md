@@ -1,7 +1,6 @@
 # my fedora bootc config
 
-**TODO**: setup restart policies
-
+**TODO**: setup restart policies for containers, automate build + push of image
 
 This is for my Raspberry Pi 4. To install, build the Containerfile in this repo and then [install](#installing) the resulting image. 
 
@@ -16,7 +15,7 @@ Things this bootable container has:
 
 ## installing
 
-I recommend using Podman Desktop with the Bootable Containers extension for building the container and the bootc images. Instead of building, you can also install ghcr.io/PerpetualCreativity/fire-rpi directly, but I do not recommend this if you are not me since it will automatically update every time I push to the registry :) (see `.github/workflows/build.yml`)
+I recommend using Podman Desktop with the Bootable Containers extension for building the container and the bootc images. Instead of building, you can also install ghcr.io/PerpetualCreativity/fire-rpi directly, but I do not recommend this if you are not me since it will automatically update every time I push to the registry :)
 
 Notes:
 - The Containerfile expects a `vulcan_pubkey` build argument, which will become the authorized ssh public key for the user `vulcan`.
