@@ -1,0 +1,11 @@
+# https://github.com/dani-garcia/vaultwarden#dockerpodman-cli
+[Container]
+Image=quay.io/vaultwarden/server:latest
+AutoUpdate=registry
+
+Hostname=fire-vaultwarden
+Volume=/var/lib/vaultwarden:/data/
+PublishPort=8081:80
+
+[Install]
+WantedBy=default.target

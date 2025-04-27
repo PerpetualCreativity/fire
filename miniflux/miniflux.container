@@ -1,0 +1,12 @@
+# https://miniflux.app/docs/docker.html
+[Container]
+Pod=miniflux-pod.pod
+
+Image=quay.io/miniflux/miniflux:latest
+AutoUpdate=registry
+
+Environment=DATABASE_URL=postgres://miniflux:vulcan@localhost/miniflux?sslmode=disable
+Environment=RUN_MIGRATIONS=1 CREATE_ADMIN=1 ADMIN_USERNAME=miniflux ADMIN_PASSWORD=vulcan
+
+[Install]
+WantedBy=default.target

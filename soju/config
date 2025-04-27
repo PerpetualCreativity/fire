@@ -1,0 +1,3 @@
+listen irc://localhost unix+admin://
+hostname soju-irc.vedthiru.com
+db sqlite3 /var/lib/soju/soju.db

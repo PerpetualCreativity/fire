@@ -1,0 +1,10 @@
+[Container]
+Image=soju
+AutoUpdate=local
+
+Hostname=fire-soju
+Volume=/var/lib/soju:/var/lib/soju
+PublishPort=6667:6667
+
+[Install]
+WantedBy=default.target

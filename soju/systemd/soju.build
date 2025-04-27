@@ -1,0 +1,3 @@
+[Build]
+ImageTag=soju
+File=/usr/share/containerfiles/soju-Containerfile

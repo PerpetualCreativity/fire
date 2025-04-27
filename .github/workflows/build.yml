@@ -1,0 +1,51 @@
+name: build bootc image
+
+permissions:
+  contents: read
+  packages: write
+
+on:
+  workflow_dispatch:
+    push:
+      branches:
+        - main
+      paths-ignore:
+        - '**/README.md'
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04-arm
+    env:
+      IMAGE_NAME: fire-rpi
+      REGISTRY: ghcr.io/PerpetualCreativity
+
+    steps:
+      # - name: delete huge tools folder
+      #   run: rm -rf /opt/hostedtoolcache
+
+      - name: clone
+        uses: actions/checkout@v4
+
+      - name: buildah
+        id: build-image
+        uses: redhat-actions/buildah-build@v2
+        with:
+          image: fire-rpi
+          tags: latest ${{ github.sha }}
+          containerfiles: ./Containerfile
+          build-args: vulcan_pubkey=${{ vars.VULCAN_PUBKEY }}
+
+      - name: login to ghcr
+        uses: redhat-actions/podman-login@v1
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: push to ghcr
+        id: push-to-ghcr
+        uses: redhat-actions/push-to-registry@v2
+        with:
+          image: ${{ steps.build-image.outputs.image }}
+          tags: ${{ steps.build-image.outputs.tags }}
+          registry: ${{ env.REGISTRY }}

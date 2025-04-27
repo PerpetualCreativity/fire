@@ -1,0 +1,11 @@
+[Container]
+Pod=miniflux-pod.pod
+
+Image=docker.io/postgres/postgres:17-alpine
+AutoUpdate=registry
+
+Environment=POSTGRES_USER=miniflux POSTGRES_PASSWORD=vulcan POSTGRES_DB=miniflux_db
+Volume=/var/lib/miniflux-pg:/var/lib/postgresql/data
+
+[Install]
+WantedBy=default.target
