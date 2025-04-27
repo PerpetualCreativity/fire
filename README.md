@@ -1,8 +1,8 @@
 # my fedora bootc config
 
-**TODO**: setup restart policies for containers, automate build + push of image
+**TODO**: setup restart policies for containers, fix bootc container lint warnings
 
-This is for my Raspberry Pi 4. To install, build the Containerfile in this repo and then [install](#installing) the resulting image. 
+This is for my Raspberry Pi 4.
 
 Things this bootable container has:
 - Fedora 41 (might change soon)
@@ -15,10 +15,12 @@ Things this bootable container has:
 
 ## installing
 
-I recommend using Podman Desktop with the Bootable Containers extension for building the container and the bootc images. Instead of building, you can also install ghcr.io/PerpetualCreativity/fire-rpi directly, but I do not recommend this if you are not me since it will automatically update every time I push to the registry :)
+`build.sh [--push]` builds the image (and pushes).
+
+I recommend using Podman Desktop with the Bootable Containers extension for building the bootc images.
 
 Notes:
-- The Containerfile expects a `vulcan_pubkey` build argument, which will become the authorized ssh public key for the user `vulcan`.
+- The Containerfile expects a `vulcan_pubkey` build argument, which will become the authorized ssh public key for the user `vulcan`. `build.sh` uses `~/.ssh/id_ed25519.pub`.
 - I've been using ext4; if I experiment with others later I will report here. bootc-image-builder supports XFS, ext4, and btrfs for root.
 - Once you create the images, since Raspberry Pi Imager only accepts `.raw.xz` (and not `.raw`, for some reason) you may want to `xz -T0 -0 disk.raw`.
 - After you boot, you will need to resize the main partition (AFAICT the default size is 10G).
